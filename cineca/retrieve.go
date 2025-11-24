@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"slices"
 	"strings"
 	"time"
 	"unipi-calendar-sync/webcalendar"
@@ -17,7 +18,7 @@ import (
 var titleCaser = cases.Title(language.Italian, cases.Compact)
 var partitionRegex = regexp.MustCompile(`\bcorso \w\b`)
 
-func GetCalendarJson(cinecaCalendarId, cinecaUrl string, from, to time.Time, courseYear int, partition string) ([]webcalendar.Event, error) {
+func GetCalendarJson(cinecaCalendarId, cinecaUrl string, from, to time.Time, courseYear int, partition string, ignoredClasses []string) ([]webcalendar.Event, error) {
 	payload := strings.NewReader(`{
 		"mostraImpegniAnnullati":false,
 		"mostraIndisponibilitaTotali":false,
@@ -57,6 +58,11 @@ func GetCalendarJson(cinecaCalendarId, cinecaUrl string, from, to time.Time, cou
 		eventDetails := detailsMap.([]any)[0].(map[string]any)
 		eventNameLower := strings.ToLower(eventDetails["nome"].(string))
 		eventNameLower = strings.TrimSpace(eventNameLower)
+
+		// Skip ignored classes
+		if slices.Contains(ignoredClasses, eventNameLower) {
+			continue
+		}
 
 		// Filter just in case
 		if courseYear > 0 {

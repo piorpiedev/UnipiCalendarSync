@@ -12,12 +12,13 @@ import (
 const Day = time.Hour * 24
 
 type CalendarConfig struct {
-	CinecaUrl        string `json:"cinecaUrl"`
-	CinecaCalendarId string `json:"cinecaCalendarId"`
-	CalDavUrl        string `json:"caldavUrl"`
-	CalDavPath       string `json:"caldavPath"`
-	Year             int    `json:"year"`      // Ignored if <= 0
-	Partition        string `json:"partition"` // Letter | Ignored if empty
+	CinecaUrl        string   `json:"cinecaUrl"`
+	CinecaCalendarId string   `json:"cinecaCalendarId"`
+	CalDavUrl        string   `json:"caldavUrl"`
+	CalDavPath       string   `json:"caldavPath"`
+	Year             int      `json:"year"`            // Ignored if <= 0
+	Partition        string   `json:"partition"`       // Letter | Ignored if empty
+	IgnoredClasses   []string `json:"ignored_classes"` // MUST contain lowercase only strings
 }
 
 func main() {
@@ -38,6 +39,7 @@ func main() {
 			time.Now().UTC().Add(Day*365),
 			calendar.Year,
 			calendar.Partition,
+			calendar.IgnoredClasses,
 		)
 		if err != nil {
 			log.Fatal(err)
