@@ -38,7 +38,7 @@ func (e *Event) toIcal() (*ical.Calendar, error) {
 
 	cal := ical.NewCalendar()
 	cal.Props.SetText(ical.PropVersion, "2.0")
-	cal.Props.SetText(ical.PropProductID, "-//Unipi Sync//IT")
+	cal.Props.SetText(ical.PropProductID, SyncProductId)
 	cal.Children = append(cal.Children, vevent)
 	return cal, nil
 }

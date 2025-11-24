@@ -6,9 +6,12 @@ import (
 	"log"
 	"strings"
 
+	"github.com/emersion/go-ical"
 	"github.com/emersion/go-webdav"
 	"github.com/emersion/go-webdav/caldav"
 )
+
+const SyncProductId = "-//Unipi Sync//IT"
 
 func SyncEvents(events []Event, username, passwd, caldavUrl, caldavPath string) error {
 	// CalDav client
@@ -30,6 +33,9 @@ func SyncEvents(events []Event, username, passwd, caldavUrl, caldavPath string) 
 		return err
 	}
 	for _, obj := range objects {
+		if obj.Data.Props.Get(ical.PropProductID).Value != SyncProductId {
+			continue
+		}
 		uid := strings.TrimSuffix(obj.Path, ".ics")
 		uid = uid[strings.LastIndex(uid, "/")+1:]
 		remoteEvents[uid] = obj.Path
