@@ -17,18 +17,17 @@ The ones i use
 ### IT-L31 | 1A
 🌍 [WebView](https://nextcloud.piorpie.com/apps/calendar/p/2LBCcnJF4wE92zqt) 
 |
-🔗 [CalDav](webcal://nextcloud.piorpie.com/remote.php/dav/public-calendars/2LBCcnJF4wE92zqt?export)
+🔗 CalDav: `webcal://nextcloud.piorpie.com/remote.php/dav/public-calendars/2LBCcnJF4wE92zqt?export`
 
 ### IT-L31 | 1B
 🌍 [WebView](https://nextcloud.piorpie.com/apps/calendar/p/3tngiqDGMxdr5yji) 
 |
-🔗 [CalDav](webcal://nextcloud.piorpie.com/remote.php/dav/public-calendars/3tngiqDGMxdr5yji?export)
+🔗 CalDav: `webcal://nextcloud.piorpie.com/remote.php/dav/public-calendars/3tngiqDGMxdr5yji?export`
 
 ### IT-L31 | 1C
 🌍 [WebView](https://nextcloud.piorpie.com/apps/calendar/p/Zq9q9B4c6dC2QY6X) 
 |
-🔗 [CalDav](webcal://nextcloud.piorpie.com/remote.php/dav/public-calendars/Zq9q9B4c6dC2QY6X?export)
-
+🔗 CalDav: `webcal://nextcloud.piorpie.com/remote.php/dav/public-calendars/Zq9q9B4c6dC2QY6X?export`
 
 ---
 
