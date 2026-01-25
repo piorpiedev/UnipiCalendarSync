@@ -1,6 +1,7 @@
 .vscode/
 spec/
 bin/
+tmp/
 
 .env
 go.sum
